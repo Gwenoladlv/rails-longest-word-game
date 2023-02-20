@@ -1,0 +1,18 @@
+<div class="container text-center">
+  <h1 class="my-6">New game</h1>
+
+  <ul class="list-inline py-58">
+  <% @letters.each do |letter| %>
+    <li class="list-inline-item bg-info p-4 rounded font-weight-bold">
+      <%= letter.capitalize %>
+    </li>
+    <% end %>
+  </ul>
+  <p>What's your longest word?</p>
+  <form action="/score" method="POST" data-turbo="false">
+  <input type="text" name="word">
+  <input type="submit" value="play">
+  <%= hidden_field_tag :letters, @letters %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  </form>
+</div>
